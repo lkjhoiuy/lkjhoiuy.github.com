@@ -15,8 +15,12 @@
 
 	<script>
 		$(function() {
-			var href = $('#ma').attr('href');
-			$('#ma').attr('href', href + moment().format('YYYY/MM') + '/');
+			var now = moment();
+			var href;
+			href = $('#ma').attr('href');
+			$('#ma').attr('href', href + now.format('YYYY/MM') + '/');
+			href = $('#fj').attr('href');
+			$('#fj').attr('href', href + '?action=calendar&year=' + now.format('YYYY') + '&month=' + now.format('M');
 		});
 	</script>
 	
