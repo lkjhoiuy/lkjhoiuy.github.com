@@ -1,1 +1,0 @@
-Search.setIndex({envversion:43,titleterms:{titr:1,toto:1,document:0},objnames:{},filenames:["index","doc"],objects:{},titles:["Documentation","Toto"],terms:{content:0},objtypes:{}})
