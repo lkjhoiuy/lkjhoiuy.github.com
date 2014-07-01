@@ -3,5 +3,6 @@
 # This causes some issues as Jekyll ignores files and folders which start with an underscore, like _static.
 
 doctrees/*
-html/.*
 html/_sources
+html/.buildinfo
+html/objects.inv
