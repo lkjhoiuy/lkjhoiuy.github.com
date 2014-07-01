@@ -1,1 +1,1 @@
-Search.setIndex({titles:["Toto","Documentation","Met-Art"],objtypes:{},terms:{http:2,com:2,content:1,guest:2},envversion:43,objnames:{},filenames:["doc","index","ma"],objects:{},titleterms:{toto:0,met:2,titr:0,document:1,titl:2,art:2}})
+Search.setIndex({titleterms:{document:0,toto:2,titl:1,art:1,met:1,titr:2},objnames:{},objtypes:{},objects:{},titles:["Documentation","Met-Art","Toto"],envversion:43,filenames:["index","ma","doc"],terms:{content:0,com:1,guest:1,http:1}})
