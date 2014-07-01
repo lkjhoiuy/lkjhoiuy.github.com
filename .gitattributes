@@ -1,7 +1,8 @@
-# Auto detect text files and perform LF normalization
-*        text=auto
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
 
-*.html   text diff=html
+# Explicitly declare text files you want to always be normalized and converted to native line endings on checkout.
 *.css    text
 *.js     text
 *.sql    text
+*.html   text diff=html
