@@ -2,6 +2,5 @@
 * text=auto
 
 # Explicitly declare text files you want to always be normalized and converted to native line endings on checkout.
-# *.css		text eol=lf
-# *.js		text eol=lf
-# *.html	text eol=lf
+# *.html text eol=lf
+doc/html/* text=false
