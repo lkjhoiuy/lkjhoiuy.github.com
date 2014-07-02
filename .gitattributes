@@ -2,9 +2,10 @@
 # * text=auto
 
 # Explicitly declare text files you want to always be normalized and converted to native line endings on checkout.
-*.html text eol=lf
+# ok after "rm --cached..."
+# *.html text eol=lf
 
 # Generated files (sphinx) eol=lf
-# doc/html/* -text
+doc/html/* -text
 # *.html -text
 
