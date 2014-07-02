@@ -7,6 +7,6 @@
 
 # Generated files (sphinx) eol=lf
 doc/html/* -text
-doc/html/_static/* -text
+doc/html/*/* -text
 
 
