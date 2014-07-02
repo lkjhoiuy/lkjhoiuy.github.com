@@ -6,4 +6,5 @@
 
 # Generated files (sphinx) eol=lf
 doc/html/* -text
+*.html -text
 
