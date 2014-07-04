@@ -15,4 +15,5 @@ Add all your changed files back, and prepare them for a commit.
 
 Commit.
 
-`$ git config core.autocrlf false` (true par défaut)
+Or core.autocrlf ? No
+`$ git config core.autocrlf false` (true by default)
