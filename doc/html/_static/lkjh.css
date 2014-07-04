@@ -250,3 +250,16 @@ div.viewcode-block:target {
     border-top: 1px solid #ac9;
     border-bottom: 1px solid #ac9;
 }
+
+img.cover {
+    height: 200px;
+		-webkit-transition: width 1s, height 1s;
+}
+
+img.cover:hover {
+    height: 500px;
+}
+
+img.model {
+    height: 300px;
+}
