@@ -263,3 +263,11 @@ img.cover:hover {
 img.model {
     height: 300px;
 }
+
+div#sites div.toctree-wrapper ul {
+	list-style-type: none;
+}
+
+div#sites div.toctree-wrapper ul li {
+	display: inline;
+}
