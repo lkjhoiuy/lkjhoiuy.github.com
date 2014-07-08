@@ -267,7 +267,14 @@ img.model {
 div#sites div.toctree-wrapper ul {
 	list-style-type: none;
 }
-
 div#sites div.toctree-wrapper ul li {
 	display: inline;
+}
+div#sites div.toctree-wrapper ul {
+	display: none;
+}
+
+.logo-sites-toctree {
+	height: 50px;
+	margin: 0;
 }
