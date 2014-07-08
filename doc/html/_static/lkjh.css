@@ -274,7 +274,12 @@ div#sites div.toctree-wrapper ul {
 	display: none;
 }
 
-.logo-sites-toctree {
+p.toctree-sites-logo {
+	text-align: left !important;
+	
+}
+p.toctree-sites-logo img {
 	height: 50px;
 	margin: 0;
+	border: 1px solid #3a6992;
 }
