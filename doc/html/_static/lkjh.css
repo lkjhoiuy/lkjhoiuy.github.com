@@ -252,7 +252,7 @@ div.viewcode-block:target {
 }
 
 img.cover {
-		height: 180px;
+		height: 150px;
     float: left;
 		margin: 0 3px 3px 0;
 		-webkit-transform: scale(1,1);
@@ -260,7 +260,7 @@ img.cover {
 		-webkit-transition-duration: 500ms;
 }
 img.cover:hover {
-		-webkit-transform: scale(2,2);
+		-webkit-transform: scale(5,5);
 		position: relative;
 		z-index: 99;
 }
