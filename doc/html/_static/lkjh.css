@@ -252,31 +252,43 @@ div.viewcode-block:target {
 }
 
 img.cover {
-    height: 200px;
-		-webkit-transition: width 1s, height 1s;
+		height: 180px;
+    float: left;
+		margin: 0 3px 3px 0;
+		-webkit-transform: scale(1,1);
+		-webkit-transition-timing-function: ease-out;
+		-webkit-transition-duration: 500ms;
 }
-
 img.cover:hover {
-    height: 500px;
+		-webkit-transform: scale(2,2);
+		position: relative;
+		z-index: 99;
 }
 
 img.model {
     height: 300px;
 }
+img.logo-blog {
+    height: 80px;
+}
+img.logo-site {
+    height: 110px;
+}
 
+/*
 div#sites div.toctree-wrapper ul {
 	list-style-type: none;
 }
 div#sites div.toctree-wrapper ul li {
 	display: inline;
 }
+*/
 div#sites div.toctree-wrapper ul {
 	display: none;
 }
 
 p.toctree-sites-logo {
 	text-align: left !important;
-	
 }
 p.toctree-sites-logo img {
 	height: 50px;
