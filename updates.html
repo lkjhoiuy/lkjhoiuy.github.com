@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+
+	<title>Updates</title>
+
+	<link rel="stylesheet" href="./css/jquery.dataTables.css">
+	<link rel="stylesheet" href="./css/demo.css">
+	<style></style>
+	
+	<!-- <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+	<script src="./js/jquery.js"></script>
+	<script src="./js/jquery.dataTables.js"></script>
+	<script src="./js/demo.js"></script>
+	
+	<script>
+		/*
+		var updates;
+		
+		$.getJSON('updates.json', function(data) {
+			// updates = $.parseJSON(data);
+			updates = eval(data);
+		});
+		*/
+		$(function() {
+		
+			$('#example').dataTable( {
+				"processing": true,
+				"ajax": "updates.json",
+				"columns": [
+					{ "data": "id" },
+					{ "data": "date" },
+					{ "data": "beautyname" },
+					{ "data": "type" },
+					{ "data": "count" },
+					{ "data": "author" },
+				]
+			} );
+		});
+	</script>
+	
+</head>
+
+<body class="dt-example">
+	
+	<div class="container">
+		<section>
+			<h1>Updates</h1>
+
+			<table id="example" class="display" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Date</th>
+						<th>Title</th>
+						<th>Type</th>
+						<th>Count</th>
+						<th>Author</th>
+					</tr>
+				</thead>
+
+				<tfoot>
+				</tfoot>
+
+				<tbody>
+				</tbody>
+			</table>
+
+		</section>
+	</div>
+</body>
+
+</html>
