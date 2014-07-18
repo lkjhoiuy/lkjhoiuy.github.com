@@ -53,6 +53,8 @@
 
 		var thumb = true;
 		var url, cov;
+		var helper = 'http://m.met-art.com/helper/thumb.php?width=300&thumb=';
+		var pref;
 		
 		function titi() {
 			$('#cover > img').toggle();
@@ -61,15 +63,17 @@
 			$('tr td').on('mouseover', function() {
 				var id = $(this).parent().children(':first-child').text();
 				cov = thumb ? 't_cover_' : 'cover_';
-				url = 'http://static.met-art.com/media/'+id+'/'+cov+id+'.jpg';
+				//~ url = 'http://static.met-art.com/media/'+id+'/'+cov+id+'.jpg';
+				pref = thumb ? helper : '';
+				url = pref + 'http://static.met-art.com/media/'+id+'/cover_'+id+'.jpg';
 				$('#cover > img').attr('src', url);
 			});
 			
 			$('tr td').on('click', function() {
 				var id = $(this).parent().children(':first-child').text();
 				thumb = !thumb;
-				cov = thumb ? 't_cover_' : 'cover_';
-				url = 'http://static.met-art.com/media/'+id+'/'+cov+id+'.jpg';
+				pref = thumb ? helper : '';
+				url = pref + 'http://static.met-art.com/media/'+id+'/cover_'+id+'.jpg';
 				$('#cover > img').attr('src', url);
 			});
 		}
