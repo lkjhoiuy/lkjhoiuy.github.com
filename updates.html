@@ -8,7 +8,17 @@
 
 	<link rel="stylesheet" href="./css/jquery.dataTables.css">
 	<link rel="stylesheet" href="./css/demo.css">
-	<style></style>
+	<style>
+		#cover {
+			position: fixed;
+			top: 94px;
+			left: 5px;
+			border: 1px solid black;
+			min-width: 100px;
+			min-height: 100px;
+			z-index: 100;
+		}
+	</style>
 	
 	<!-- <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script> -->
 	<script src="./js/jquery.js"></script>
@@ -29,6 +39,7 @@
 			$('#example').dataTable( {
 				"processing": true,
 				"ajax": "json/updates.json",
+        "lengthMenu": [[25, 50, 200, 1000, 4000, -1], [25, 50, 200, 1000, 4000, "All"]],
 				"columns": [
 					{ "data": "id" },
 					{ "data": "date" },
@@ -39,11 +50,39 @@
 				]
 			} );
 		});
+
+		var thumb = true;
+		var url, cov;
+		
+		function titi() {
+			$('#cover > img').toggle();
+			$('tr td').off('mouseover click');
+			
+			$('tr td').on('mouseover', function() {
+				var id = $(this).parent().children(':first-child').text();
+				cov = thumb ? 't_cover_' : 'cover_';
+				url = 'http://static.met-art.com/media/'+id+'/'+cov+id+'.jpg';
+				$('#cover > img').attr('src', url);
+			});
+			
+			$('tr td').on('click', function() {
+				var id = $(this).parent().children(':first-child').text();
+				thumb = !thumb;
+				cov = thumb ? 't_cover_' : 'cover_';
+				url = 'http://static.met-art.com/media/'+id+'/'+cov+id+'.jpg';
+				$('#cover > img').attr('src', url);
+			});
+		}
+		
 	</script>
 	
 </head>
 
 <body class="dt-example">
+	
+	<div id="cover" onclick="titi()">
+	<img />
+	</div>
 	
 	<div class="container">
 		<section>
