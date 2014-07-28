@@ -18,6 +18,28 @@
 			min-height: 100px;
 			z-index: 100;
 		}
+		body {
+			line-height: 18px;
+		}
+		#model {
+			border: 1px solid #888;
+			margin: 5px 0px;
+			padding: 3px 20px;
+		}
+		#model span.name {
+			font-weight: bold;
+			font-size: 18px;
+		}
+		#model span.desc {
+			font-size: 12px;
+		}
+		.model {
+			padding: 0 3px;
+			border: 1px solid #ccc;
+		}
+		img {
+			margin: 1px;
+		}
 	</style>
 	
 	<!-- <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script> -->
@@ -27,14 +49,44 @@
 	
 	<script>
 		var model;
-		$(function() {
 		
-			$.getJSON('http://localhost:8000/model/alysha-a', function(data) {
-				model = $.parseJSON(data);
-				//~ model = eval('('+data+')');
-				;
+		function getModel(modelid) {
+			$.getJSON('http://localhost:8000/model/'+modelid, function(data) {
+				// model = $.parseJSON(data);
+				model = eval(data);
+				// console.dir(model);
+				
+				$('#updates').empty();
+				$('#model span.name').text(model.name);
+				$('#model span.desc').text(' - (' + model.updates.length + ') - ' +
+					[model.country,
+					model.ethnicity,
+					model.haircolor,
+					model.eyecolor,
+					model.breasts,
+					model.shaved,
+					model.height,
+					model.weight,
+					model.measurements].join(' / '));
+				for (var i=0; i < model.updates.length; i++) {
+					$('#updates').append(
+						$('<img>', {'src': 'http://localhost:8000/cover/'+model.updates[i].id+'.jpg', 'width': '200'})
+					);
+				}
 			});
+		}
 		
+		$(function() {
+			$.getJSON('http://localhost:8000/model/list', function(data) {
+				for (var i=0; i < data.length; i++) {
+					$('#models').append(
+						$('<span>', {'class': 'model', 'id': data[i]}).text(data[i])
+					);
+				}
+				$('.model').on('click', function() {
+					getModel($(this).attr('id'));
+				});
+			});
 		});
 		
 	</script>
@@ -42,9 +94,17 @@
 </head>
 
 <body>
-model
 
-<div onclick="console.dir(model)">   toto   </div>
+<div id="model">
+<span class='name'></span>
+<span class='desc'></span>
+</div>
+
+<div id="updates"></div>
+
+<div id="models">
+</div>
+
 </body>
 
 </html>
