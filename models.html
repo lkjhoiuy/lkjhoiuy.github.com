@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+
+	<title>Models</title>
+
+	<link rel="stylesheet" href="./css/jquery.dataTables.css">
+	<link rel="stylesheet" href="./css/demo.css">
+	<style>
+		#cover {
+			position: fixed;
+			top: 94px;
+			left: 5px;
+			border: 1px solid black;
+			min-width: 100px;
+			min-height: 100px;
+			z-index: 100;
+		}
+	</style>
+	
+	<!-- <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+	<script src="./js/jquery.js"></script>
+	<script src="./js/jquery.dataTables.js"></script>
+	<script src="./js/demo.js"></script>
+	
+	<script>
+		var model;
+		$(function() {
+		
+			$.getJSON('http://localhost:8000/model/alysha-a', function(data) {
+				model = $.parseJSON(data);
+				//~ model = eval('('+data+')');
+				;
+			});
+		
+		});
+		
+	</script>
+	
+</head>
+
+<body>
+model
+
+<div onclick="console.dir(model)">   toto   </div>
+</body>
+
+</html>
