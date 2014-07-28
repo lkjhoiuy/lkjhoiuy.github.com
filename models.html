@@ -23,8 +23,10 @@
 		}
 		#model {
 			border: 1px solid #888;
-			margin: 5px 0px;
+			margin: 0px;
 			padding: 3px 20px;
+			color: #000;
+			background-color: #ffd388;
 		}
 		#model span.name {
 			font-weight: bold;
@@ -33,12 +35,40 @@
 		#model span.desc {
 			font-size: 12px;
 		}
+		#updates {
+			padding: 10px 155px 0 200px;
+			background-color: #000;
+			min-height: 620px;
+			_max-height: 620px;
+			_overflow: hidden;
+			_overflow-y: scroll;
+		}
+		#models {
+			padding: 5px;
+			background-color: #abc;
+			max-height: 500px;
+			overflow: hidden;
+			overflow-y: scroll;
+		}
 		.model {
 			padding: 0 3px;
 			border: 1px solid #ccc;
 		}
+		.selected {
+			background-color: #ffd388;
+		}
 		img {
-			margin: 1px;
+			height: 150px;
+			float: left;
+			margin: 0 3px 3px 0;
+			-webkit-transform: scale(1,1);
+			-webkit-transition-timing-function: ease-out;
+			-webkit-transition-duration: 500ms;
+		}
+		img:hover {
+			-webkit-transform: scale(5,5);
+			position: relative;
+			z-index: 99;
 		}
 	</style>
 	
@@ -48,15 +78,22 @@
 	<script src="./js/demo.js"></script>
 	
 	<script>
-		var model;
+		var models;
+		var backid;
 		
 		function getModel(modelid) {
+			if (backid)
+				$('#'+backid).toggleClass('selected');
+			backid = modelid;
+			$('#'+backid).toggleClass('selected');
+		
 			$.getJSON('http://localhost:8000/model/'+modelid, function(data) {
 				// model = $.parseJSON(data);
 				model = eval(data);
 				// console.dir(model);
 				
 				$('#updates').empty();
+				$('#model').attr('ref', model.id);
 				$('#model span.name').text(model.name);
 				$('#model span.desc').text(' - (' + model.updates.length + ') - ' +
 					[model.country,
@@ -70,7 +107,7 @@
 					model.measurements].join(' / '));
 				for (var i=0; i < model.updates.length; i++) {
 					$('#updates').append(
-						$('<img>', {'src': 'http://localhost:8000/cover/'+model.updates[i].id+'.jpg', 'width': '200'})
+						$('<img>', {'src': 'http://localhost:8000/cover/'+model.updates[i].id+'.jpg'})
 					);
 				}
 			});
@@ -78,6 +115,7 @@
 		
 		$(function() {
 			$.getJSON('http://localhost:8000/model/list', function(data) {
+				models = data;
 				for (var i=0; i < data.length; i++) {
 					$('#models').append(
 						$('<span>', {'class': 'model', 'id': data[i]}).text(data[i])
@@ -87,6 +125,11 @@
 					getModel($(this).attr('id'));
 				});
 			});
+			
+			$('#model').on('click', function() {
+				var idx = models.indexOf($(this).attr('ref'));
+				getModel(models[idx+1]);
+			});
 		});
 		
 	</script>
@@ -95,15 +138,15 @@
 
 <body>
 
+<div id="models">
+</div>
+
 <div id="model">
 <span class='name'></span>
 <span class='desc'></span>
 </div>
 
 <div id="updates"></div>
-
-<div id="models">
-</div>
 
 </body>
 
