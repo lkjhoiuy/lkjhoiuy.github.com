@@ -79,8 +79,8 @@
 	<script src="./js/demo.js"></script>
 	
 	<script>
-		var host = 'http://lkjh:51306'
-		//~ var host = 'http://localhost:8000'
+		var _lkjh_host = 'http://lkjh:51306'
+		//~ var _lkjh_host = 'http://localhost:8000'
 		var models;
 		var backid;
 		
@@ -90,9 +90,8 @@
 			backid = modelid;
 			$('#'+backid).toggleClass('selected');
 		
-			alert(host);
-			alert(modelid);
-			$.getJSON(host+'/model/'+modelid, function(data) {
+			alert(_lkjh_host);
+			$.getJSON(_lkjh_host+'/model/'+modelid, function(data) {
 				// model = $.parseJSON(data);
 				model = eval(data);
 				// console.dir(model);
@@ -113,7 +112,7 @@
 				for (var i=0; i < model.updates.length; i++) {
 					var id = model.updates[i].id;
 					$('#updates').append(
-						// $('<img>', {'src': host+'/cover/'+id+'.jpg'})
+						// $('<img>', {'src': _lkjh_host+'/cover/'+id+'.jpg'})
 						$('<img>', {'src': 'http://static.met-art.com/media/'+id+'/cover_'+id+'.jpg'})
 					);
 				}
@@ -121,7 +120,7 @@
 		}
 		
 		$(function() {
-			$.getJSON(host+'/model/list', function(data) {
+			$.getJSON(_lkjh_host+'/model/list', function(data) {
 				models = data;
 				for (var i=0; i < data.length; i++) {
 					$('#models').append(
