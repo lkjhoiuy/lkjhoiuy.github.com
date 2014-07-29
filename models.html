@@ -46,7 +46,7 @@
 		#models {
 			padding: 5px;
 			background-color: #abc;
-			max-height: 500px;
+			max-height: 200px;
 			overflow: hidden;
 			overflow-y: scroll;
 		}
@@ -62,13 +62,14 @@
 			float: left;
 			margin: 0 3px 3px 0;
 			-webkit-transform: scale(1,1);
-			-webkit-transition-timing-function: ease-out;
-			-webkit-transition-duration: 500ms;
+			-webkit-transition-duration: 1500ms;
+			-webkit-transition-timing-function: cubic-bezier(.1,.9,.6,.9);
 		}
 		img:hover {
-			-webkit-transform: scale(5,5);
 			position: relative;
 			z-index: 99;
+			-webkit-transform: scale(5,5);
+			-webkit-transition-timing-function: cubic-bezier(1,0,.6,.9);
 		}
 	</style>
 	
@@ -78,6 +79,8 @@
 	<script src="./js/demo.js"></script>
 	
 	<script>
+		var host = 'http://lkjh:51306'
+		//~ var host = 'http://localhost:8000'
 		var models;
 		var backid;
 		
@@ -87,7 +90,7 @@
 			backid = modelid;
 			$('#'+backid).toggleClass('selected');
 		
-			$.getJSON('http://localhost:8000/model/'+modelid, function(data) {
+			$.getJSON(host+'/model/'+modelid, function(data) {
 				// model = $.parseJSON(data);
 				model = eval(data);
 				// console.dir(model);
@@ -106,15 +109,17 @@
 					model.weight,
 					model.measurements].join(' / '));
 				for (var i=0; i < model.updates.length; i++) {
+					var id = model.updates[i].id;
 					$('#updates').append(
-						$('<img>', {'src': 'http://localhost:8000/cover/'+model.updates[i].id+'.jpg'})
+						// $('<img>', {'src': host+'/cover/'+id+'.jpg'})
+						$('<img>', {'src': 'http://static.met-art.com/media/'+id+'/cover_'+id+'.jpg'})
 					);
 				}
 			});
 		}
 		
 		$(function() {
-			$.getJSON('http://localhost:8000/model/list', function(data) {
+			$.getJSON(host+'/model/list', function(data) {
 				models = data;
 				for (var i=0; i < data.length; i++) {
 					$('#models').append(
