@@ -90,6 +90,8 @@
 			backid = modelid;
 			$('#'+backid).toggleClass('selected');
 		
+			alert(host);
+			alert(modelid);
 			$.getJSON(host+'/model/'+modelid, function(data) {
 				// model = $.parseJSON(data);
 				model = eval(data);
