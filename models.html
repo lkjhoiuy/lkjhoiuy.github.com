@@ -79,8 +79,8 @@
 	<script src="./js/demo.js"></script>
 	
 	<script>
-		var _lkjh_host = 'http://lkjh:51306'
-		//~ var _lkjh_host = 'http://localhost:8000'
+		//~ var _lkjh_host = 'http://lkjh:51306'
+		var _lkjh_host = 'http://localhost:3306'
 		var models;
 		var backid;
 		
@@ -112,7 +112,8 @@
 					var id = model.updates[i].id;
 					$('#updates').append(
 						// $('<img>', {'src': _lkjh_host+'/cover/'+id+'.jpg'})
-						$('<img>', {'src': 'http://static.met-art.com/media/'+id+'/cover_'+id+'.jpg'})
+						//~ $('<img>', {'src': 'http://static.met-art.com/media/'+id+'/cover_'+id+'.jpg'})
+						$('<img>', {'src': 'http://n2.femjoy.com/updates/'+id+'/cover2_642x642.jpg'})
 					);
 				}
 			});
@@ -123,7 +124,7 @@
 				models = data;
 				for (var i=0; i < data.length; i++) {
 					$('#models').append(
-						$('<span>', {'class': 'model', 'id': data[i]}).text(data[i])
+						$('<span>', {'class': 'model', 'id': data[i]}).text(data[i]+' ')
 					);
 				}
 				$('.model').on('click', function() {
